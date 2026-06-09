@@ -22,19 +22,20 @@
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
   body{font-family:'Jost',sans-serif;color:#fff;height:100dvh;overflow:hidden;background:#1a140c;
-    display:flex;justify-content:center;align-items:center;
-    padding:10px 14px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    display:flex;justify-content:center;align-items:stretch;
+    padding:0;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   .backdrop{position:fixed;inset:0;z-index:-2;overflow:hidden;background:#1a140c}
   .backdrop video{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(1.25);
     min-width:100%;min-height:100%;object-fit:cover;filter:blur(34px) brightness(.5) saturate(1.1)}
   .backdrop::after{content:"";position:absolute;inset:0;background:rgba(20,15,8,.35)}
 
-  .card{width:100%;max-width:444px;position:relative;border-radius:28px;overflow:hidden;
-    box-shadow:0 24px 70px rgba(0,0,0,.55);animation:fade .6s ease both;isolation:isolate;transform-origin:center center;will-change:transform}
+  .card{width:100%;max-width:480px;min-height:100dvh;position:relative;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:center;
+    box-shadow:0 24px 70px rgba(0,0,0,.55);animation:fade .6s ease both;isolation:isolate}
   @keyframes fade{from{opacity:0}to{opacity:1}}
   .card .cardvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
   .card .scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.02) 16%, rgba(0,0,0,0) 45%, rgba(0,0,0,.04) 72%, rgba(0,0,0,.30) 100%)}
-  .content{position:relative;z-index:2;padding:15px 16px 18px}
+  .content{position:relative;z-index:2;padding:18px 18px 22px;transform-origin:center center;will-change:transform}
 
   .topbar{display:flex;justify-content:space-between;margin-bottom:8px}
   .chip{width:42px;height:42px;border-radius:50%;background:rgba(20,16,10,.42);color:#fff;
@@ -47,26 +48,27 @@
   .profile{display:flex;flex-direction:column;align-items:center;text-align:center}
   .avatar{width:90px;height:90px;border-radius:50%;object-fit:cover;background:#000;
           box-shadow:0 10px 30px rgba(0,0,0,.6)}
-  .name{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:9px}.nm{font-family:'Cormorant Garamond',serif;font-weight:700;letter-spacing:.12em;font-size:27px;text-transform:uppercase;background:linear-gradient(100deg,#f7ecc4 0%,#d4a84b 22%,#fff6da 42%,#c9952b 58%,#f7ecc4 82%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shine 4.5s linear infinite;filter:drop-shadow(0 2px 12px rgba(0,0,0,.75))}.verified{display:grid;place-items:center;filter:drop-shadow(0 2px 6px rgba(0,0,0,.55))}.verified svg{width:21px;height:21px;display:block}@keyframes shine{to{background-position:220% center}}
+  .name{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:9px}.nm{font-family:'Cormorant Garamond',serif;font-weight:700;letter-spacing:.1em;font-size:33px;text-transform:uppercase;background:linear-gradient(100deg,#f7ecc4 0%,#d4a84b 22%,#fff6da 42%,#c9952b 58%,#f7ecc4 82%);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shine 4.5s linear infinite;filter:drop-shadow(0 2px 12px rgba(0,0,0,.75))}.verified{display:grid;place-items:center;filter:drop-shadow(0 2px 6px rgba(0,0,0,.55))}.verified svg{width:24px;height:24px;display:block}@keyframes shine{to{background-position:220% center}}
   .bio{margin-top:2px;font-size:14px;font-weight:600;letter-spacing:.02em;color:#fff;
        text-shadow:0 2px 12px rgba(0,0,0,.85)}
 
   .socials{display:flex;justify-content:center;gap:16px;margin:11px 0 0}
-  .socials a{width:24px;height:24px;color:#fff;display:grid;place-items:center;
+  .socials a{width:30px;height:30px;color:#fff;display:grid;place-items:center;
             transition:transform .2s;filter:drop-shadow(0 3px 8px rgba(0,0,0,.55))}
   .socials a:hover{transform:translateY(-3px) scale(1.1)}
-  .socials svg{width:24px;height:24px;display:block}
+  .socials svg{width:30px;height:30px;display:block}
 
   .links{margin-top:14px;display:flex;flex-direction:column;gap:10px}
-  .link{position:relative;overflow:hidden;display:flex;align-items:center;gap:14px;padding:26px 20px;border:1.5px solid rgba(212,168,75,.60);border-radius:var(--radius);background:rgba(0,0,0,.16);color:#fff;text-decoration:none;font-size:16px;font-weight:500;transition:transform .18s,background .25s,border-color .25s,box-shadow .25s;opacity:0;animation:rise .55s ease forwards}.link::before{content:"";position:absolute;top:0;left:-75%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,236,180,.30),transparent);transform:skewX(-20deg);animation:sweep 6s ease-in-out infinite;pointer-events:none}.link:nth-child(2)::before{animation-delay:.8s}.link:nth-child(3)::before{animation-delay:1.6s}.link:nth-child(4)::before{animation-delay:2.4s}.link:nth-child(5)::before{animation-delay:3.2s}.link:nth-child(6)::before{animation-delay:4s}.link:nth-child(7)::before{animation-delay:4.8s}@keyframes sweep{0%{left:-75%}45%{left:130%}100%{left:130%}}
+  .link{position:relative;overflow:hidden;display:flex;align-items:center;gap:14px;padding:26px 20px;border:1.5px solid rgba(212,168,75,.60);border-radius:var(--radius);background:rgba(0,0,0,.16);color:#fff;text-decoration:none;font-size:17.5px;font-weight:500;transition:transform .18s,background .25s,border-color .25s,box-shadow .25s;opacity:0;animation:rise .55s ease forwards}.link::before{content:"";position:absolute;top:0;left:-75%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,236,180,.30),transparent);transform:skewX(-20deg);animation:sweep 6s ease-in-out infinite;pointer-events:none}.link:nth-child(2)::before{animation-delay:.8s}.link:nth-child(3)::before{animation-delay:1.6s}.link:nth-child(4)::before{animation-delay:2.4s}.link:nth-child(5)::before{animation-delay:3.2s}.link:nth-child(6)::before{animation-delay:4s}.link:nth-child(7)::before{animation-delay:4.8s}@keyframes sweep{0%{left:-75%}45%{left:130%}100%{left:130%}}
   .link:hover{transform:translateY(-2px);background:rgba(212,168,75,.18);border-color:#e7c873;box-shadow:0 0 0 1px rgba(212,168,75,.4),0 12px 30px rgba(180,140,40,.35)}
-  .link .ico{flex:0 0 24px;display:grid;place-items:center;color:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,.7))}
-  .link .ico svg{width:24px;height:24px;display:block}
+  .link .ico{flex:0 0 28px;display:grid;place-items:center;color:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,.7))}
+  .link .ico svg{width:28px;height:28px;display:block}
   .link .label{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;
                line-height:1.3;text-shadow:0 1px 6px rgba(0,0,0,.85)}
   .link .dash{opacity:.65}
   .link .ar{font-family:'Cairo',sans-serif;font-weight:600}
-  .link .dots{flex:0 0 24px;color:#fff;opacity:.55;display:grid;place-items:center}
+  
+  .link .dots{flex:0 0 28px;color:#fff;opacity:.55;display:grid;place-items:center}
   .link .dots svg{width:20px;height:20px}
 
   .footer{margin-top:13px;text-align:center;font-size:10px;letter-spacing:.22em;opacity:.8;
@@ -93,6 +95,8 @@
   .qrt{margin-top:16px;color:#1a140c;font-family:'Cairo',sans-serif;font-weight:700;font-size:18px;line-height:1.5}
   .qrt span{display:block;font-family:'Jost',sans-serif;font-weight:500;font-size:13px;color:#8a7636;letter-spacing:.04em}
   .qrclose{position:absolute;top:12px;right:14px;border:none;background:none;font-size:20px;color:#bbb;cursor:pointer;line-height:1}
+  @media(min-width:520px){.card{max-width:460px;min-height:auto;border-radius:30px;margin:auto;box-shadow:0 24px 70px rgba(0,0,0,.6)}
+    body{align-items:center;padding:18px}}
 </style>
 </head>
 <body>
@@ -2509,9 +2513,9 @@ var qrcode = function() {
 
   <script>
     function fitCard(){
-      var c=document.querySelector('.card'); if(!c) return;
+      var c=document.querySelector('.content'); if(!c) return;
       c.style.transform='none';
-      var avail=window.innerHeight-16;
+      var avail=window.innerHeight-10;
       var ch=c.offsetHeight;
       var s=Math.min(1, avail/ch);
       c.style.transform='scale('+s+')';
